@@ -12,12 +12,14 @@ namespace BuilderPattern
         {
             public string Modelo { get; set; }
             public string Cor { get; set; }
+            public string Ano { get; set; }
             public int QtdPortas { get; set; }
             public int QtdRodas { get; set; }
             public bool TemTetosolar { get; set; }
 
             public Veiculo(String modelo, 
-                String cor, 
+                String cor,
+                String ano,
                 int qtdPortas, 
                 int qtdRodas, 
                 bool temTetosolar)
@@ -36,6 +38,7 @@ namespace BuilderPattern
         {
             Veiculo veiculo = new Veiculo("Sedan",
                 "Amarelo",
+                "2015",
                 4, 
                 4, 
                 true);
