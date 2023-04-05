@@ -1,109 +1,116 @@
 ﻿using System;
 
-// Car class to be built
-class Vehicle
+// Classe a ser instanciada
+class Veiculo
 {
-    public string Model { get; set; }
-    public string Color { get; set; }
-    public int NumDoors { get; set; }
-    public bool HasSunroof { get; set; }
+    public string Modelo { get; set; }
+    public string Cor { get; set; }
+    public int QtdPortas { get; set; }
+    public int QtdRodas { get; set; }
+    public bool TemTetosolar { get; set; }
 
 }
 
-// Abstract Builder class
-public interface IVehicleBuilder
+// Interface do construtor
+public interface IVeiculoBuilder
 {
-    void SetModel(String model);
-    void SetColor(String color);
-    void SetNumDoors(int numDoors);
-    void SetSunroof(Boolean sunroof);
+    void SetModelo(String modelo);
+    void SetCor(String cor);
+    void SetQtdPortas(int qtdPortas);
+    void SetQtdRodas(int qtdRodas);
+    void SetTetosolar();
 
 }
 
-// Concrete Builder class
-class VehicleBuilder : IVehicleBuilder
+// Construtor concreto do objeto
+class VeiculoBuilder : IVeiculoBuilder
 {
-    private Vehicle vehicle = new Vehicle();
-    public void SetModel(String model)
+    private Veiculo veiculo = new Veiculo();
+    public void SetModelo(String model)
     {
-        this.vehicle.Model = model;
+        this.veiculo.Modelo = model;
     }
-    public void SetColor(String color)
+    public void SetCor(String color)
     {
-        this.vehicle.Color = color;
+        this.veiculo.Cor = color;
     }
-    public void SetNumDoors(int numDoors)
+    public void SetQtdPortas(int qtdPortas)
     {
-        this.vehicle.NumDoors = numDoors;
+        this.veiculo.QtdPortas = qtdPortas;
     }
-    public void SetSunroof(Boolean sunroof)
+    public void SetQtdRodas(int QtdRodas)
     {
-        this.vehicle.HasSunroof = sunroof;
+        this.veiculo.QtdRodas = QtdRodas;
     }
-    public Vehicle GetResult()
+    public void SetTetosolar()
     {
-        return this.vehicle;
+        this.veiculo.TemTetosolar = true;
+    }
+    public Veiculo GetResult()
+    {
+        return this.veiculo;
     }
 }
 
-// Director class
-class VehicleBuildDirector
+// Classe diretora
+class VeiculoBuildDirector
 {
-    public void ConstructBicycle(VehicleBuilder builder)
+    public void ConstructBicicleta(VeiculoBuilder builder)
     {
-        builder.SetModel("Bicycle");
-        builder.SetNumDoors(0);
+        builder.SetModelo("Bicicleta");
+
+        builder.SetQtdRodas(4);
+
         Console.WriteLine("Cor da bicicleta? ");
-        String cor = Console.ReadLine();
-        builder.SetColor(cor);
+        String input = Console.ReadLine();
+        builder.SetCor(input);
     }
 
-    public void ConstructSedan(VehicleBuilder builder)
+    public void ConstructSedan(VeiculoBuilder builder)
     {
-        builder.SetModel("Sedan");
-        builder.SetNumDoors(4);
+        builder.SetModelo("Sedan");
+        builder.SetQtdPortas(4);
+        builder.SetQtdRodas(4);
         Console.WriteLine("Cor do carro? ");
         String input = Console.ReadLine();
-        builder.SetColor(input);
+        builder.SetCor(input);
         Console.WriteLine("O carro terá teto solar? ");
         input = Console.ReadLine();
         if (input == "Sim")
-            builder.SetSunroof(true);
-        else
-            builder.SetSunroof(false);
+            builder.SetTetosolar();
 
     }
 }
 
-// Client code
+// Main
 class Program
 {
     static void Main(string[] args)
     {
-        VehicleBuilder builder = new VehicleBuilder();
-        VehicleBuildDirector director = new VehicleBuildDirector();
+        VeiculoBuilder builder = new VeiculoBuilder();
+        VeiculoBuildDirector director = new VeiculoBuildDirector();
 
-        director.ConstructBicycle(builder);
+        director.ConstructBicicleta(builder);
 
         
 
-        Vehicle vehicle = builder.GetResult();
+        Veiculo veiculo = builder.GetResult();
 
 
-        Console.WriteLine("Model: " + vehicle.Model);
-        Console.WriteLine("Color: " + vehicle.Color);
-        Console.WriteLine("Number of doors: " + vehicle.NumDoors);
+        Console.WriteLine("Model: " + veiculo.Modelo);
+        Console.WriteLine("Color: " + veiculo.Cor);
+        Console.WriteLine("Number of doors: " + veiculo.QtdPortas);
         Console.ReadLine();
 
-        builder = new VehicleBuilder();
+        builder = new VeiculoBuilder();
 
         director.ConstructSedan(builder);
-        vehicle = builder.GetResult();
+        veiculo = builder.GetResult();
 
-        Console.WriteLine("Model: " + vehicle.Model);
-        Console.WriteLine("Color: " + vehicle.Color);
-        Console.WriteLine("Number of doors: " + vehicle.NumDoors);
-        Console.WriteLine("Has sunroof: " + vehicle.HasSunroof);
+        Console.WriteLine("Model: " + veiculo.Modelo);
+        Console.WriteLine("Color: " + veiculo.Cor);
+        Console.WriteLine("Number of doors: " + veiculo.QtdPortas);
+        Console.WriteLine("Has sunroof: " + veiculo.TemTetosolar);
         Console.ReadLine();
 
 
