@@ -1,58 +1,77 @@
 ﻿using System;
 
 // Car class to be built
-class Car
+class Vehicle
 {
     public string Model { get; set; }
     public string Color { get; set; }
     public int NumDoors { get; set; }
     public bool HasSunroof { get; set; }
+
 }
 
 // Abstract Builder class
-abstract class CarBuilder
+public interface IVehicleBuilder
 {
-    protected Car car = new Car();
-    public abstract void SetModel();
-    public abstract void SetColor();
-    public abstract void SetNumDoors();
-    public abstract void SetSunroof();
-    public Car GetResult()
-    {
-        return car;
-    }
+    void SetModel(String model);
+    void SetColor(String color);
+    void SetNumDoors(int numDoors);
+    void SetSunroof(Boolean sunroof);
+
 }
 
 // Concrete Builder class
-class SportsCarBuilder : CarBuilder
+class VehicleBuilder : IVehicleBuilder
 {
-    public override void SetModel()
+    private Vehicle vehicle = new Vehicle();
+    public void SetModel(String model)
     {
-        car.Model = "Sports Car";
+        this.vehicle.Model = model;
     }
-    public override void SetColor()
+    public void SetColor(String color)
     {
-        car.Color = "Red";
+        this.vehicle.Color = color;
     }
-    public override void SetNumDoors()
+    public void SetNumDoors(int numDoors)
     {
-        car.NumDoors = 2;
+        this.vehicle.NumDoors = numDoors;
     }
-    public override void SetSunroof()
+    public void SetSunroof(Boolean sunroof)
     {
-        car.HasSunroof = true;
+        this.vehicle.HasSunroof = sunroof;
+    }
+    public Vehicle GetResult()
+    {
+        return this.vehicle;
     }
 }
 
 // Director class
-class CarBuildDirector
+class VehicleBuildDirector
 {
-    public void Construct(CarBuilder builder)
+    public void ConstructBicycle(VehicleBuilder builder)
     {
-        builder.SetModel();
-        builder.SetColor();
-        builder.SetNumDoors();
-        builder.SetSunroof();
+        builder.SetModel("Bicycle");
+        builder.SetNumDoors(0);
+        Console.WriteLine("Cor da bicicleta? ");
+        String cor = Console.ReadLine();
+        builder.SetColor(cor);
+    }
+
+    public void ConstructSedan(VehicleBuilder builder)
+    {
+        builder.SetModel("Sedan");
+        builder.SetNumDoors(4);
+        Console.WriteLine("Cor do carro? ");
+        String input = Console.ReadLine();
+        builder.SetColor(input);
+        Console.WriteLine("O carro terá teto solar? ");
+        input = Console.ReadLine();
+        if (input == "Sim")
+            builder.SetSunroof(true);
+        else
+            builder.SetSunroof(false);
+
     }
 }
 
@@ -61,15 +80,32 @@ class Program
 {
     static void Main(string[] args)
     {
-        CarBuilder builder = new SportsCarBuilder();
-        CarBuildDirector director = new CarBuildDirector();
+        VehicleBuilder builder = new VehicleBuilder();
+        VehicleBuildDirector director = new VehicleBuildDirector();
 
-        director.Construct(builder);
+        director.ConstructBicycle(builder);
 
-        Car car = builder.GetResult();
-        Console.WriteLine("Model: " + car.Model);
-        Console.WriteLine("Color: " + car.Color);
-        Console.WriteLine("Number of doors: " + car.NumDoors);
-        Console.WriteLine("Has sunroof: " + car.HasSunroof);
+        
+
+        Vehicle vehicle = builder.GetResult();
+
+
+        Console.WriteLine("Model: " + vehicle.Model);
+        Console.WriteLine("Color: " + vehicle.Color);
+        Console.WriteLine("Number of doors: " + vehicle.NumDoors);
+        Console.ReadLine();
+
+        builder = new VehicleBuilder();
+
+        director.ConstructSedan(builder);
+        vehicle = builder.GetResult();
+
+        Console.WriteLine("Model: " + vehicle.Model);
+        Console.WriteLine("Color: " + vehicle.Color);
+        Console.WriteLine("Number of doors: " + vehicle.NumDoors);
+        Console.WriteLine("Has sunroof: " + vehicle.HasSunroof);
+        Console.ReadLine();
+
+
     }
 }
