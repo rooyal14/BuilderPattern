@@ -10,7 +10,18 @@ public class Veiculo
     public int QtdRodas { get; set; }
     public bool TemTetosolar { get; set; }
 
+    public void MostrarTodosAtributos()
+    {
+        Console.WriteLine("Modelo: " + this.Modelo);
+        Console.WriteLine("Cor: " + this.Cor);
+        Console.WriteLine("Ano: " + this.Ano);
+        Console.WriteLine("Nº de portas: " + this.QtdPortas);
+        Console.WriteLine("Nº de rodas: " + this.QtdRodas);
+        Console.WriteLine("Tem teto solar: " + this.TemTetosolar);
+        Console.ReadLine();
+    }
 }
+
 
 // Construtor abstrato do objeto
 public abstract class VeiculoBuilder
@@ -79,6 +90,8 @@ class BicicletaBuilder : VeiculoBuilder
     }
 }
 
+
+
 // Classe diretora
 public class VeiculoBuildDirector
 {
@@ -102,45 +115,22 @@ public class VeiculoBuildDirector
     }
 }
 
+
+
 // Main
 class Program
 {
     static void Main(string[] args)
     {
-
-        VeiculoBuilder builder = new SedanBuilder();
+        VeiculoBuilder builder = new BicicletaBuilder();
+        //VeiculoBuilder builder = new SedanBuilder();
         VeiculoBuildDirector director = new VeiculoBuildDirector(builder);
 
         director.ConstructVeiculo();
         
         Veiculo veiculo = director.GetVeiculo();
 
-
-        Console.WriteLine("Modelo: " + veiculo.Modelo);
-        Console.WriteLine("Cor: " + veiculo.Cor);
-        Console.WriteLine("Ano: " + veiculo.Ano);
-        Console.WriteLine("Nº de portas: " + veiculo.QtdPortas);
-        Console.WriteLine("Nº de rodas: " + veiculo.QtdRodas);
-        Console.WriteLine("Tem teto solar: " + veiculo.TemTetosolar);
-        Console.ReadLine();
-
-
-
-
-        VeiculoBuilder builderNovo = new BicicletaBuilder();
-        VeiculoBuildDirector directorNovo = new VeiculoBuildDirector(builderNovo);
-
-        directorNovo.ConstructVeiculo();
-
-        Veiculo veiculoNovo = directorNovo.GetVeiculo();
-
-        Console.WriteLine("Modelo: " + veiculoNovo.Modelo);
-        Console.WriteLine("Cor: " + veiculoNovo.Cor);
-        Console.WriteLine("Nº de rodas: " + veiculoNovo.QtdRodas);
-        Console.ReadLine();
-
-
-
+        veiculo.MostrarTodosAtributos();
 
 
     }

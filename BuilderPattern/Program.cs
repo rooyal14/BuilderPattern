@@ -9,6 +9,15 @@ class Veiculo
     public int QtdRodas { get; set; }
     public bool TemTetosolar { get; set; }
 
+    public void MostrarTodosAtributos()
+    {
+        Console.WriteLine("Modelo: " + this.Modelo);
+        Console.WriteLine("Cor: " + this.Cor);
+        Console.WriteLine("Nº de portas: " + this.QtdPortas);
+        Console.WriteLine("Nº de rodas: " + this.QtdPortas);
+        Console.WriteLine("Tem teto solar: " + this.TemTetosolar);
+        Console.ReadLine();
+    }
 }
 
 // Interface do construtor
@@ -96,11 +105,7 @@ class Program
 
         Veiculo veiculo = builder.GetResult();
 
-
-        Console.WriteLine("Model: " + veiculo.Modelo);
-        Console.WriteLine("Color: " + veiculo.Cor);
-        Console.WriteLine("Number of doors: " + veiculo.QtdPortas);
-        Console.ReadLine();
+        veiculo.MostrarTodosAtributos();
 
         builder = new VeiculoBuilder();
 

@@ -32,7 +32,6 @@ namespace BuilderPattern
             }
 
 
-
         }
         static void Main(string[] args)
         {

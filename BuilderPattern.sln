@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuilderPattern", "BuilderPa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConstrutorPadrao", "ConstrutorPadrao\ConstrutorPadrao.csproj", "{B44ED85F-D470-41CD-AA9F-7F006B023C9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuilderPatterCerto", "BuilderPatterCerto\BuilderPatterCerto.csproj", "{789764CB-B290-4F52-9863-23E536E38655}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuilderPatternCerto", "BuilderPatterCerto\BuilderPatternCerto.csproj", "{789764CB-B290-4F52-9863-23E536E38655}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
