@@ -122,8 +122,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        VeiculoBuilder builder = new BicicletaBuilder();
-        //VeiculoBuilder builder = new SedanBuilder();
+        VeiculoBuilder builder = new SedanBuilder();
         VeiculoBuildDirector director = new VeiculoBuildDirector(builder);
 
         director.ConstructVeiculo();

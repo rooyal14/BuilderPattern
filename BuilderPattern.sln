@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.33328.57
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuilderPattern", "BuilderPattern\BuilderPattern.csproj", "{6066AFC9-ACED-4E57-8575-CD8FE28E763B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConstrutorPadrao", "ConstrutorPadrao\ConstrutorPadrao.csproj", "{B44ED85F-D470-41CD-AA9F-7F006B023C9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuilderPatternCerto", "BuilderPatterCerto\BuilderPatternCerto.csproj", "{789764CB-B290-4F52-9863-23E536E38655}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuilderPattern", "BuilderPatterCerto\BuilderPattern.csproj", "{789764CB-B290-4F52-9863-23E536E38655}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6066AFC9-ACED-4E57-8575-CD8FE28E763B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6066AFC9-ACED-4E57-8575-CD8FE28E763B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6066AFC9-ACED-4E57-8575-CD8FE28E763B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6066AFC9-ACED-4E57-8575-CD8FE28E763B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B44ED85F-D470-41CD-AA9F-7F006B023C9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B44ED85F-D470-41CD-AA9F-7F006B023C9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B44ED85F-D470-41CD-AA9F-7F006B023C9C}.Release|Any CPU.ActiveCfg = Release|Any CPU

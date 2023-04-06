@@ -26,9 +26,21 @@ namespace BuilderPattern
             {
                 this.Modelo = modelo;
                 this.Cor = cor;
+                this.Ano = ano;
                 this.QtdPortas = qtdPortas;
                 this.QtdRodas = qtdRodas;
                 this.TemTetosolar = temTetosolar;
+            }
+
+            public void MostrarTodosAtributos()
+            {
+                Console.WriteLine("Modelo: " + this.Modelo);
+                Console.WriteLine("Cor: " + this.Cor);
+                Console.WriteLine("Ano: " + this.Ano);
+                Console.WriteLine("Nº de portas: " + this.QtdPortas);
+                Console.WriteLine("Nº de rodas: " + this.QtdRodas);
+                Console.WriteLine("Tem teto solar: " + this.TemTetosolar);
+                Console.ReadLine();
             }
 
 
@@ -36,18 +48,14 @@ namespace BuilderPattern
         static void Main(string[] args)
         {
             Veiculo veiculo = new Veiculo("Sedan",
-                "Amarelo",
-                "2015",
+                "Amarelo", 
+                "2015", 
                 4, 
                 4, 
                 true);
 
-            Console.WriteLine("Modelo: " + veiculo.Modelo);
-            Console.WriteLine("Cor: " + veiculo.Cor);
-            Console.WriteLine("Numero de portas: " + veiculo.QtdPortas);
-            Console.WriteLine("Numero de rodas: " + veiculo.QtdRodas);
-            Console.WriteLine("Tem teto solar: " + veiculo.TemTetosolar);
-            Console.ReadLine();
+            veiculo.MostrarTodosAtributos();
+
 
 
         }
